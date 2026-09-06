@@ -2,7 +2,6 @@
 package com.shop.product.service;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -34,7 +33,6 @@ public class ProductCalculatingPriceServiceImpl implements ProductCalculatingPri
 
         private static final String CONFIG_KEY_MINIMUM_PRICE = "minimum_price";
         private static final String CONFIG_KEY_US_CURRENCY_RATE = "us_currency_rate";
-        private static final String GRADE_NM = "NM";
 
         private final TcgPPriceService tcgPPriceService;
         private final PriceConfigRepository priceConfigRepository;
@@ -71,37 +69,17 @@ public class ProductCalculatingPriceServiceImpl implements ProductCalculatingPri
 
         @Override
         public Long calculateProductPrice(CardProduct product, BigDecimal marketPrice, PricingContext context) {
-                if (!product.getIsPriceLinked()) {
+                log.warn("Portfolio snapshot: linked selling-price formula is omitted.");
+                if (product != null && !Boolean.TRUE.equals(product.getIsPriceLinked())) {
                         return product.getPrice();
                 }
-                String game = resolveGame(product);
-                Double rate = product.getPricingRate();
-                BigDecimal pricingRate = rate != null ? BigDecimal.valueOf(rate) : BigDecimal.ONE;
-                return calculateLinkedPrice(marketPrice, pricingRate, product.getCondition(), context, game);
+                return 0L;
         }
 
         @Override
         public Long calculatePriceFromUnionPrice(UnionPrice unionPrice) {
-                if (unionPrice == null || unionPrice.getPrice() == null) {
-                        return 0L;
-                }
-                PricingContext context = loadPricingContext();
-                return calculateLinkedPrice(unionPrice.getPrice(), BigDecimal.ONE, GRADE_NM, context, unionPrice.getGame());
-        }
-
-        private Long calculateLinkedPrice(BigDecimal marketPrice, BigDecimal pricingRate, String grade, PricingContext context, String game) {
-                Double gradePrice = context.gradePercentage(grade);
-                BigDecimal rate = context.currencyRate(game);
-                BigDecimal calculated = marketPrice
-                                .multiply(pricingRate)
-                                .multiply(BigDecimal.valueOf(gradePrice))
-                                .multiply(rate);
-
-                BigDecimal rounded = calculated
-                                .divide(BigDecimal.valueOf(100), 0, RoundingMode.CEILING)
-                                .multiply(BigDecimal.valueOf(100));
-
-                return rounded.max(context.minimumPrice(game)).longValue();
+                log.warn("Portfolio snapshot: union selling-price formula is omitted.");
+                return 0L;
         }
 
         @Override
@@ -120,25 +98,7 @@ public class ProductCalculatingPriceServiceImpl implements ProductCalculatingPri
 
         @Override
         public BigDecimal calculateProductPriceUsd(Long krwPrice, String game) {
-                if (game == null || krwPrice == null) {
-                        return null;
-                }
-                PricingContext context = loadPricingContext();
-                BigDecimal rate = context.getGameCurrencyRates().get(game);
-                if (rate == null) {
-                        log.warn("us_currency_rate not found for game: {}. USD price will be null.", game);
-                        return null;
-                }
-                return BigDecimal.valueOf(krwPrice).divide(rate, 2, RoundingMode.HALF_UP);
-        }
-
-        private String resolveGame(CardProduct product) {
-                UnionPrice unionPrice = product.getUnionPrice();
-                if (unionPrice == null || unionPrice.getGame() == null) {
-                        throw new IllegalStateException(
-                                "Cannot determine game for CardProduct id=" + product.getId()
-                                        + ": unionPrice or game is null");
-                }
-                return unionPrice.getGame();
+                log.warn("Portfolio snapshot: USD conversion formula is omitted.");
+                return null;
         }
 }
