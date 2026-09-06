@@ -6,14 +6,13 @@ MTG, Flesh and Blood, Disney Lorcana, Star Wars Unlimited, Riftbound 등 **TCG �
 
 **Next.js 16 (App Router)** + **Spring Boot 4.0.3** 풀스택입니다.
 
-## 이 프로젝트에서 볼 것
+## 대표 설계/개선
 
-- `union_prices`: TCGPlayer·MTG·FAB 세 소스를 한 카탈로그로 묶은 가격 SoT
-- 서버 `CheckoutDraft` 스냅샷, 금액 불변식, 비관적 잠금, 조건부 재고 차감
-- Toss Payments 승인 후 주문 확정, 실패 시 취소·멱등키 (테스트 키)
-- `product_search_maps` 읽기 모델, QueryDSL facet, 선택적 Redis 캐시
-- 관리자 주문 수정·환불, 오프라인 입고/판매, 검색·상품 운영 화면
-- 개발 중 막힌 지점과 대응 (아래 **문제 해결 사례**)
+- **결제:** Draft snapshot + 재검증 + 멱등 처리로 금액·재고 정합성 보장
+- **검색:** 통합 읽기 모델 + 병렬 facet 조회로 대규모 카드 검색 구조 개선
+- **운영:** 외부 가격 오류, SSE, JWT refresh race 등 실제 운영 장애 대응
+
+구현 포인트는 `union_prices`(세 소스를 정규화한 내부 기준 테이블), `CheckoutDraft`, `product_search_maps`, 관리자 주문·입고 화면입니다. 막힌 지점과 대응은 아래 **문제 해결 사례**에 있습니다.
 
 ## 기술 스택
 
@@ -128,7 +127,7 @@ Compose의 `SERVER_PORT`는 1567입니다. 컨테이너에서 MariaDB에 붙이�
 
 카드 판매가를 정하려면 시장가가 필요한데, 원천이 세 갈래였습니다. TCGPlayer(`tcg_p_prices`), MTG 카탈로그(`mtg_prices`), FAB 카탈로그(`fab_prices`)는 ID·세트 코드·인쇄(foil) 표기가 제각각이라, 검색·판매가·이미지를 요청 시점에 조인하면 규칙이 흩어집니다.
 
-각 소스 행에 `check_code`를 만들고, 사람이 고친 값은 `check_code_refined`로 남긴 뒤 서로 링크합니다. 그다음 한 테이블 `union_prices`로 적재해 **카드 카탈로그의 source of truth**로 씁니다. 적재 순서는 TCG → FAB/MTG이며, 같은 코드는 뒤 단계가 덮어씁니다. `check_code_refined`는 unique입니다.
+각 소스 행에 `check_code`를 만들고, 사람이 고친 값은 `check_code_refined`로 남긴 뒤 서로 링크합니다. 그다음 한 테이블 `union_prices`로 적재해 **카드 가격·카탈로그의 내부 기준 테이블(canonical source)** 로 씁니다. 원천 데이터는 소스 테이블에 그대로 두고, 서비스가 판매가·검색·이미지를 붙일 때 이 정규화 행을 기준으로 삼습니다. 적재 순서는 TCG → FAB/MTG이며, 같은 코드는 뒤 단계가 덮어씁니다. `check_code_refined`는 unique입니다.
 
 판매 단위(`card_product`)와 검색 읽기 모델(`product_search_maps`)은 이 행을 기준으로 파생됩니다. 등급 비율·환율은 `UnionPrice.price` 위에 올립니다. 공개본에서는 매칭 산식·소스 URL·적재 구현은 스텁입니다.
 
