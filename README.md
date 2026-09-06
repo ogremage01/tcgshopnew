@@ -8,10 +8,12 @@ MTG, Flesh and Blood, Disney Lorcana, Star Wars Unlimited, Riftbound 등 **TCG �
 
 ## 이 프로젝트에서 볼 것
 
+- `union_prices`: TCGPlayer·MTG·FAB 세 소스를 한 카탈로그로 묶은 가격 SoT
 - 서버 `CheckoutDraft` 스냅샷, 금액 불변식, 비관적 잠금, 조건부 재고 차감
 - Toss Payments 승인 후 주문 확정, 실패 시 취소·멱등키 (테스트 키)
 - `product_search_maps` 읽기 모델, QueryDSL facet, 선택적 Redis 캐시
 - 관리자 주문 수정·환불, 오프라인 입고/판매, 검색·상품 운영 화면
+- 개발 중 막힌 지점과 대응 (아래 **문제 해결 사례**)
 
 ## 기술 스택
 
@@ -117,6 +119,60 @@ Compose의 `SERVER_PORT`는 1567입니다. 컨테이너에서 MariaDB에 붙이�
 
 - SSR: fetch
 - CSR: axios
+
+## 문제 해결 사례
+
+개발·연동 중에 실제로 막힌 지점입니다. 상세 보고서는 `docs/`에 있습니다.
+
+### 세 가격 소스를 `union_prices` 하나로 묶음
+
+카드 판매가를 정하려면 시장가가 필요한데, 원천이 세 갈래였습니다. TCGPlayer(`tcg_p_prices`), MTG 카탈로그(`mtg_prices`), FAB 카탈로그(`fab_prices`)는 ID·세트 코드·인쇄(foil) 표기가 제각각이라, 검색·판매가·이미지를 요청 시점에 조인하면 규칙이 흩어집니다.
+
+각 소스 행에 `check_code`를 만들고, 사람이 고친 값은 `check_code_refined`로 남긴 뒤 서로 링크합니다. 그다음 한 테이블 `union_prices`로 적재해 **카드 카탈로그의 source of truth**로 씁니다. 적재 순서는 TCG → FAB/MTG이며, 같은 코드는 뒤 단계가 덮어씁니다. `check_code_refined`는 unique입니다.
+
+판매 단위(`card_product`)와 검색 읽기 모델(`product_search_maps`)은 이 행을 기준으로 파생됩니다. 등급 비율·환율은 `UnionPrice.price` 위에 올립니다. 공개본에서는 매칭 산식·소스 URL·적재 구현은 스텁입니다.
+
+### 관리자 주문 알림 SSE가 붙지 않음
+
+프론트(`:3000`)에서 API(`:18567`)로 EventSource를 직접 열면 CORS로 `Failed to fetch`가 났고, `next.config` rewrite로 `/api/*`를 통째로 넘기면 스트림이 버퍼링되며 `Failed to proxy` 500이 났습니다.
+
+브라우저는 same-origin만 보고, Next.js Route Handler가 백엔드 스트림을 pipe하도록 바꿨습니다. rewrite 패턴에서 `admin/alarm/subscribe`만 제외합니다. 주문 알림은 트랜잭션 **커밋 후**(`AFTER_COMMIT`)에만 보냅니다.
+
+→ `docs/ADMIN-SSE-ALARM-IMPLEMENTATION-REPORT.md`
+
+### 재고가 있는데 검색에서 품절로 보임
+
+카드 카탈로그 행과 실제 판매 행이 검색맵에서 둘 다 `UNION_PRICE`를 쓸 수 있었습니다. `card_product` 재고는 있는데, 다른 행의 `inStock=false`가 목록에 남는 경우가 있었습니다.
+
+`tableName`을 참조 테이블로 고정했습니다. `UNION_PRICE`는 카탈로그 표시, `CARD_PRODUCT` / `SEALED_PRODUCT` / `MANUAL_PRODUCT`만 장바구니·결제·재고 차감 대상입니다.
+
+→ `docs/PRODUCTSEARCHMAP-REFERENCE-REFACTOR-REPORT.md`
+
+### 검색 첫 로딩이 수 초
+
+`search/init`이 상품 조회와 facet용 DISTINCT를 한 요청에서 순차로 돌렸고, SSR도 init 다음 목록을 이어서 호출했습니다. 키워드 `LIKE`와 집계가 겹치면 체감 지연이 컸습니다.
+
+단계별 시간 로그와 느린 SQL 로그를 넣고, facet을 전용 스레드 풀에서 병렬 조회했습니다. 프론트는 `Promise.all`로 init·목록을 동시에 요청합니다. facet만 Redis에 넣을 수 있게 했고, 기본은 캐시 없이 동작합니다.
+
+→ `docs/SEARCH-PERFORMANCE-IMPLEMENTATION-REPORT.md`
+
+### 외부 시세 0원이 그대로 팔림
+
+가격 소스에서 `UnionPrice.price = 0`이 들어오면 `CardProduct`가 공개 상태로 남을 수 있었습니다.
+
+ingestion 후 자동 숨김·복원과, 등록/수정 시 0원이면 비공개 가드를 넣었습니다. 관리자가 직접 숨긴 상품과 구분하려고 `hiddenByPriceError`를 썼습니다. 자동 복원은 이 플래그가 켜진 행만 대상입니다.
+
+→ `docs/PRICE-ERROR-CARD-IMPLEMENTATION-REPORT.md`
+
+### 토스 연동: 전화번호 거절, 승인 후 확정 실패
+
+폼/DB 값이 `010-1234-5678`처럼 하이픈을 포함하면 토스 SDK가 특수문자 오류를 냈습니다. 위젯에 넘기기 직전에 숫자만 남기도록 정규화했습니다.
+
+승인 후 DB 확정이 실패하면 결제 취소를 시도하고, 같은 draft 재요청은 비관적 잠금과 기존 주문 반환으로 멱등 처리합니다. 결제 timeout 후 자동 대사는 아직 없습니다.
+
+### 토큰 만료 직후 요청이 한꺼번에 401
+
+여러 API가 동시에 401을 받으면 refresh를 각각 호출해 레이스가 났습니다. axios 인터셉터에서 `refreshPromise` 하나를 공유하고, 나머지는 그 결과를 기다리게 했습니다. refresh 자체가 401이면 세션을 지우고 로그인으로 보냅니다.
 
 ## 알려진 제한 (이 공개본)
 
