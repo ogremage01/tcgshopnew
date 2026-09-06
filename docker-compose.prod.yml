@@ -1,0 +1,50 @@
+# Production server: host MariaDB + unified app container (prod profile)
+#
+# Deploy path: /var/www/html/tcgshop
+#   1. Upload a finished .env file
+#   2. docker load -i tcgshop-app.tar
+#   3. mkdir -p /var/www/html/tcgshop/data/{uploads,card-images} /var/www/html/tcgshop/logs
+#   4. cd /var/www/html/tcgshop && docker compose -f docker-compose.prod.yml up -d
+#
+# Persistent data: ${DEPLOY_ROOT}/data/{uploads,card-images}
+# Logs: ${DEPLOY_ROOT}/logs/application.log
+# DB: host MariaDB via network_mode: host -> 127.0.0.1
+# Public port: depends on mounted nginx.conf (current default: 2602)
+
+services:
+  app:
+    image: tcgshop-app:latest
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      TZ: Asia/Seoul
+      SERVER_PORT: 18567
+      DB_URL: ${DB_URL:-jdbc:mariadb://127.0.0.1:3306/shop?useUnicode=true&characterEncoding=utf8mb4&serverTimezone=Asia/Seoul}
+      DB_USERNAME: ${DB_USERNAME:-shopadmin}
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      PERSONAL_DATA_ENCRYPTION_KEY: ${PERSONAL_DATA_ENCRYPTION_KEY}
+      CORS_ORIGINS: ${CORS_ORIGINS:-https://your-domain.com}
+      PERMIT_METADATA_WITHOUT_AUTH: ${PERMIT_METADATA_WITHOUT_AUTH:-false}
+      STRICT_ORIGIN_CHECK: ${STRICT_ORIGIN_CHECK:-true}
+      MULTIPART_MAX_FILE_SIZE: ${MULTIPART_MAX_FILE_SIZE:-20MB}
+      MULTIPART_MAX_REQUEST_SIZE: ${MULTIPART_MAX_REQUEST_SIZE:-20MB}
+      API_SERVER_URL: http://127.0.0.1:18567
+      FILE_UPLOAD_PATH: /app/data/uploads/
+      FILE_CARD_IMAGES: /app/data/card-images/
+      MAIL_HOST: ${MAIL_HOST:-smtp.gmail.com}
+      MAIL_PORT: ${MAIL_PORT:-587}
+      GOOGLE_MAIL_ADDRESS: ${GOOGLE_MAIL_ADDRESS:-}
+      GOOGLE_MAIL_PASSWORD: ${GOOGLE_MAIL_PASSWORD:-}
+      TOSS_WIDGET_SECRET_KEY: ${TOSS_WIDGET_SECRET_KEY}
+      POSTAL_CODE_SERVICE_API_KO_KEY: ${POSTAL_CODE_SERVICE_API_KO_KEY:-}
+      POSTAL_CODE_SERVICE_API_EN_KEY: ${POSTAL_CODE_SERVICE_API_EN_KEY:-}
+      HOSTNAME: "0.0.0.0"
+      LOG_PATH: /app/logs
+      JAVA_TOOL_OPTIONS: -Duser.timezone=Asia/Seoul
+    volumes:
+      - ${DEPLOY_ROOT:-/var/www/html/tcgshop}/data/uploads:/app/data/uploads
+      - ${DEPLOY_ROOT:-/var/www/html/tcgshop}/data/card-images:/app/data/card-images
+      - ${DEPLOY_ROOT:-/var/www/html/tcgshop}/logs:/app/logs
+      - ${DEPLOY_ROOT:-/var/www/html/tcgshop}/nginx.conf:/etc/nginx/nginx.conf:ro

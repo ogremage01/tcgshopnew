@@ -1,0 +1,47 @@
+# 시연·스테이징 서버용: 외부 DB + 통합 앱(demo 프로필)
+#
+# 서버 배포 경로: /var/www/html/tcgshop
+#   1. .env 파일 업로드 (JWT_SECRET, DB_URL 등 설정 완료된 것)
+#   2. docker load -i tcgshop-app.tar
+#   3. mkdir -p /var/www/html/tcgshop/data/{uploads,card-images} /var/www/html/tcgshop/logs
+#   4. cd /var/www/html/tcgshop && docker-compose -f docker-compose.demo.yml up -d
+#
+# 영속 데이터: ${DEPLOY_ROOT}/data/{uploads,card-images}
+# 애플리케이션 로그: ${DEPLOY_ROOT}/logs/application.log (롤링: application.yyyy-MM-dd.i.log.gz)
+# DB: 호스트 DB 사용 (network_mode: host → 127.0.0.1 직접 접근)
+# 접속 포트: 1567 (Nginx가 1567 리슨, Spring Boot는 18567 내부 포트)
+
+services:
+  app:
+    image: tcgshop-app:latest
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-demo}
+      TZ: Asia/Seoul
+      SERVER_PORT: 18567
+      DB_URL: ${DB_URL:-jdbc:mariadb://127.0.0.1:3306/shop?useUnicode=true&characterEncoding=utf8mb4&serverTimezone=Asia/Seoul}
+      DB_USERNAME: ${DB_USERNAME:-root}
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      PERSONAL_DATA_ENCRYPTION_KEY: ${PERSONAL_DATA_ENCRYPTION_KEY}
+      CORS_ORIGINS: ${CORS_ORIGINS:-https://tcgshop.example}
+      STRICT_ORIGIN_CHECK: ${STRICT_ORIGIN_CHECK:-true}
+      API_SERVER_URL: http://127.0.0.1:18567
+      FILE_UPLOAD_PATH: /app/data/uploads/
+      FILE_CARD_IMAGES: /app/data/card-images/
+      MAIL_HOST: ${MAIL_HOST:-smtp.gmail.com}
+      MAIL_PORT: ${MAIL_PORT:-587}
+      GOOGLE_MAIL_ADDRESS: ${GOOGLE_MAIL_ADDRESS:-}
+      GOOGLE_MAIL_PASSWORD: ${GOOGLE_MAIL_PASSWORD:-}
+      TOSS_WIDGET_SECRET_KEY: ${TOSS_WIDGET_SECRET_KEY:-}
+      POSTAL_CODE_SERVICE_API_KO_KEY: ${POSTAL_CODE_SERVICE_API_KO_KEY:-}
+      POSTAL_CODE_SERVICE_API_EN_KEY: ${POSTAL_CODE_SERVICE_API_EN_KEY:-}
+      HOSTNAME: "0.0.0.0"
+      LOG_PATH: /app/logs
+      JAVA_TOOL_OPTIONS: -Duser.timezone=Asia/Seoul
+    volumes:
+      - ${DEPLOY_ROOT:-/var/www/html/tcgshop}/data/uploads:/app/data/uploads
+      - ${DEPLOY_ROOT:-/var/www/html/tcgshop}/data/card-images:/app/data/card-images
+      - ${DEPLOY_ROOT:-/var/www/html/tcgshop}/logs:/app/logs
+      - ${DEPLOY_ROOT:-/var/www/html/tcgshop}/nginx.conf:/etc/nginx/nginx.conf:ro

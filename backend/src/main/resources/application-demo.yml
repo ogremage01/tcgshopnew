@@ -1,0 +1,66 @@
+# 시연·스테이징 서버용 프로필
+# 시크릿·DB·CORS는 환경 변수로 주입 (application-dev.yml 의 로컬 고정값 사용 금지)
+#
+# 서버 배포 루트: /var/www/html/tcgshop
+# 호스트 데이터: .../data/{uploads,card-images} → /app/data/...
+# 호스트 로그: .../logs → /app/logs (application.log, 롤링 gzip)
+#
+# 실행 예:
+#   SPRING_PROFILES_ACTIVE=demo
+#   DB_URL=jdbc:mariadb://db-host:3306/shop?...
+#   DB_USERNAME=...
+#   DB_PASSWORD=...
+#   JWT_SECRET=<32자 이상>
+#   PERSONAL_DATA_ENCRYPTION_KEY=<Base64 32바이트>
+#   CORS_ORIGINS=https://tcgshop.example
+
+app:
+  scheduler:
+    zone: Asia/Seoul
+    card-data-update: "0 0 2 * * *"
+    tcg-p-image-download: "0 30 3 * * *"
+    openbinder-image-download: "0 30 3 * * *"
+  cors:
+    origins: ${CORS_ORIGINS:https://tcgshop.example}
+  security:
+    permit-metadata-without-auth: ${PERMIT_METADATA_WITHOUT_AUTH:true}
+    strict-origin-check: ${STRICT_ORIGIN_CHECK:true}
+  jwt:
+    secret: ${JWT_SECRET}
+  personal-data-encryption-key: ${PERSONAL_DATA_ENCRYPTION_KEY}
+  toss-place:
+    access-key: ${TOSS_PLACE_ACCESS_KEY}
+    secret-key: ${TOSS_PLACE_SECRET_KEY}
+    merchant-id: ${TOSS_PLACE_MERCHANT_ID}
+
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 15
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+  web:
+    resources:
+      static-locations: classpath:/static/,file:${FILE_CARD_IMAGES:/app/data/card-images/}
+  mvc:
+    static-path-pattern: /card-images/**
+
+file:
+  path:
+    upload: ${FILE_UPLOAD_PATH:/app/data/uploads/}
+    card-images: ${FILE_CARD_IMAGES:/app/data/card-images/}
+
+# Docker 운영(demo): 호스트 ${DEPLOY_ROOT}/logs → /app/logs 마운트. logback-spring.xml 참고.
+logging:
+  file:
+    path: ${LOG_PATH:/app/logs}
+    name: ${LOG_PATH:/app/logs}/application.log
+  level:
+    root: INFO
+    org.hibernate.SQL: warn

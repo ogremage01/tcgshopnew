@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: test
+
+app:
+  cors:
+    origins: http://localhost:3000
+  auth:
+    refresh-expiration-ms: 1209600000
+    access-expiration-ms: 3600000
+  security:
+    strict-origin-check: false
+    permit-metadata-without-auth: true

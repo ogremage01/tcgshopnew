@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /*/cart
+Disallow: /*/cart/checkout
+Disallow: /*/login
+Disallow: /*/register
+Disallow: /*/mypage
+Disallow: /*/guest-order-check
+
+Sitemap: /sitemap.xml

@@ -1,0 +1,531 @@
+{
+    "siteTitle": "Rolling Dice TCG & Hobby",
+    "siteDescription": "Great Hobby Shop in Korea!",
+    "nav": {
+        "home": "Shop",
+        "products": "Products",
+        "cart": "Cart",
+        "admin": "Admin",
+        "login": "Login",
+        "logout": "Logout",
+        "mypage": "My Page",
+        "guestordercheck": "Guest Order"
+    },
+    "home": {
+        "heroTitle": "Welcome to our shop",
+        "heroSubtitle": "Discover a variety of products.",
+        "cta": "View products",
+        "sectionProductsTitle": "Products",
+        "sectionProductsDesc": "Browse products across many categories.",
+        "sectionCartTitle": "Cart",
+        "sectionCartDesc": "Review items in your cart and checkout.",
+        "view": "View"
+    },
+    "cart": {
+        "title": "Cart",
+        "empty": "Your cart is empty.",
+        "total": "Total",
+        "totalLabel": "Total",
+        "remove": "Remove",
+        "checkout": "Checkout",
+        "continueShopping": "Continue shopping",
+        "decreaseQuantity": "Decrease quantity",
+        "increaseQuantity": "Increase quantity",
+        "cartList": "Cart List",
+        "cartEmpty": "Cart is empty",
+        "removeCartItemConfirm": "Are you sure you want to remove this item from your cart?",
+        "buy": "Buy",
+        "clear": "Clear",
+        "clearCartConfirm": "Are you sure you want to clear your cart?",
+        "clearCartSuccess": "Your cart has been cleared.",
+        "clearCartError": "Failed to clear your cart.",
+        "removeCartItemSuccess": "Your cart item has been removed.",
+        "removeCartItemError": "Failed to remove your cart item.",
+        "updateCartSuccess": "Your cart item quantity has been updated.",
+        "updateCartError": "Failed to update your cart item quantity.",
+        "addCartSuccess": "Your cart item has been added.",
+        "addCartError": "Failed to add your cart item.",
+        "stockOverflowError": "You cannot add more items to your cart than the stock allows.",
+        "productUnavailableError": "This product is no longer available and has been removed from your cart.",
+        "stock": "Stock",
+        "image": "Image",
+        "productInfo": "Product Info",
+        "price": "Price",
+        "quantity": "Quantity",
+        "priceTotal": "Price Total",
+        "productsCount": "",
+        "products": "Products",
+        "quantityCount": "Qty"
+    },
+    "login": {
+        "title": "Login",
+        "email": "Email",
+        "password": "Password",
+        "button": "Login",
+        "registerButton": "Register",
+        "error": "Login failed. Please check your email and password.",
+        "submitting": "Signing in...",
+        "validation": {
+            "emailRequired": "Please enter your email.",
+            "emailInvalid": "Please enter a valid email address.",
+            "passwordRequired": "Please enter your password."
+        },
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "forgotPassword": "Forgot your password?"
+    },
+    "terms": {
+        "title": "Terms of Service",
+        "content": "Terms of Service content"
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "content": "Privacy Policy content"
+    },
+    "auth": {
+        "error": {
+            "emailAndPasswordRequired": "Please enter your email and password.",
+            "invalidEmailOrPassword": "Invalid email or password.",
+            "invalidRefreshToken": "Your session has expired. Please sign in again.",
+            "invalidAccessToken": "Authentication is not valid.",
+            "userNotFound": "User not found.",
+            "duplicateEmail": "This email is already registered.",
+            "passwordPolicyViolation": "The password does not meet the policy requirements.",
+            "internalServerError": "A server error occurred."
+        }
+    },
+    "user": {
+        "error": {
+            "duplicateEmail": "This email is already registered.",
+            "invalidPassword": "Password must be 8–20 characters and include at least one special character: !@#$%^&*()\\-_=+[]{}?,.",
+            "passwordNotMatch": "Password does not match."
+        }
+    },
+    "register": {
+        "title": "Register",
+        "name": "Name",
+        "email": "Email",
+        "password": "Password",
+        "passwordConfirm": "Confirm password",
+        "address": "Address",
+        "phone": "Phone",
+        "button": "Register",
+        "submitting": "Registering...",
+        "success": "Registration successful. Please log in.",
+        "error": "Registration failed. Please try again.",
+        "haveAccount": "Already have an account?",
+        "mustType": "* Please enter information. it's required.",
+        "termsOfService": "Terms of Service",
+        "privacyPolicy": "Privacy Policy",
+        "termsAgreed": "Terms of Service Agreed",
+        "privacyAgreed": "Privacy Policy Agreed",
+        "validation": {
+            "nameRequired": "Please enter your name.",
+            "emailRequired": "Please enter your email.",
+            "emailInvalid": "Please enter a valid email address.",
+            "passwordRequired": "Please enter your password.",
+            "passwordConfirmRequired": "Please confirm your password.",
+            "passwordMatch": "Passwords match.",
+            "passwordNotMatch": "Password does not match.",
+            "agreementRequired": "Please complete the agreement.",
+            "termsAgreedRequired": "Please agree to the terms of service.",
+            "privacyAgreedRequired": "Please agree to the privacy policy."
+        }
+    },
+    "mypage": {
+        "main": {
+            "tab": {
+                "main": "Main",
+                "order": "Orders",
+                "point": "Points"
+            },
+            "personalInfo": {
+                "title": "Personal Information",
+                "name": "Name",
+                "edit": "Edit",
+                "editName": "Edit Name",
+                "registeredEmail": "Registered Email",
+                "rewardPoint": "Reward Points",
+                "editPassword": "Change Password",
+                "currentPassword": "Current Password",
+                "newPassword": "New Password",
+                "newPasswordConfirm": "Confirm New Password",
+                "passwordMatch": "New passwords match.",
+                "passwordMismatch": "New passwords do not match.",
+                "nameChangeSuccess": "Your name has been updated.",
+                "passwordConfirmMismatch": "New password and confirmation do not match.",
+                "passwordChangeSuccess": "Your password has been updated."
+            },
+            "orderOverview": {
+                "title": "Order Overview",
+                "description": "View your 5 most recent orders."
+            },
+            "orderHistory": {
+                "title": "Order History"
+            },
+            "pointLog": {
+                "title": "Point History",
+                "currentPoint": "Current points: {point}",
+                "empty": "No point history.",
+                "columns": {
+                    "date": "Date",
+                    "changedPoint": "Changed Points",
+                    "beforeAfter": "Before / After",
+                    "executor": "Action"
+                }
+            },
+            "button": {
+                "withdraw": "Withdraw",
+                "save": "Save"
+            },
+            "error": {
+                "pointNotEnough": "You have insufficient points to withdraw."
+            },
+            "withdraw": {
+                "title": "Account Withdrawal",
+                "lossPointConfirm": "Withdrawing will result in the loss of points. Are you sure you want to withdraw?"
+            }
+        }
+    },
+    "common": {
+        "confirm": "Confirm",
+        "error": "An error occurred. Please try again.",
+        "next": "Next",
+        "previous": "Previous",
+        "page": "Page",
+        "of": "of",
+        "results": "results",
+        "total": "Total",
+        "items": "items",
+        "order": "Order",
+        "game": "Game",
+        "detail": "Detail",
+        "cancel": "Cancel",
+        "logoAlt": "Rolling Dice TCG & Hobby",
+        "productImageAlt": "Product image"
+    },
+    "order": {
+        "orderDetail": "Order Detail",
+        "title": "Order",
+        "empty": "Your order is empty.",
+        "total": "Total",
+        "checkout": "Checkout",
+        "continueShopping": "Continue shopping",
+        "listColumns": {
+            "orderId": "Order ID",
+            "orderDate": "Date",
+            "orderTotal": "Subtotal",
+            "orderStatus": "Status",
+            "orderAmount": "Amount"
+        },
+        "cancelSuccess": "Order cancelled.",
+        "cancelFailed": "Failed to cancel order.",
+        "cancelOrder": "Cancel",
+        "cancelNotAllowed": "Cannot cancel this order.",
+        "detailForbidden": "You do not have permission to view this order.",
+        "detailNotFound": "Order not found.",
+        "status": {
+            "ORDER_COMPLETED": "Order completed",
+            "ORDER_RECEIPT_COMPLETED": "Receipt completed",
+            "ORDER_PENDING": "Payment verification",
+            "ORDER_DELIVERY_COMPLETED": "Shipped",
+            "ORDER_CANCELLED": "Cancelled"
+        },
+        "paymentMethod": {
+            "카드": "CREDIT CARD",
+            "CARD": "CREDIT CARD",
+            "DIRECT": "Direct",
+            "TRANSFER": "Transfer"
+        },
+        "paymentMethodLabel": "Payment Method",
+        "productSubtotalLabel": "Product Subtotal",
+        "deliveryFeeLabel": "Delivery Fee",
+        "paymentCurrencyLabel": "Payment Currency",
+        "totalPaymentAmountLabel": "Total Payment Amount",
+        "totalPaymentAmountDescription": "Includes shipping, before point deduction",
+        "usedPointAmountLabel": "Used Point Amount",
+        "actualPaymentAmountLabel": "Actual Payment Amount",
+        "earnedPointLabel": "Earned Point",
+        "orderCustomerLabel": "Order Customer",
+        "recipientNameLabel": "Recipient Name",
+        "recipientPhoneLabel": "Recipient Phone",
+        "recipientEmailLabel": "Recipient Email",
+        "deliveryCompanyLabel": "Delivery Company",
+        "deliveryCompany": {
+            "STORE_PICKUP": "Store Pickup",
+            "CJ_LOGISTICS": "CJ Logistics"
+        },
+        "recipientAddressLabel": "Recipient Address",
+        "storePickup": "Store Pickup",
+        "orderStatusLabel": "Order Status",
+        "orderRequestLabel": "Order Request",
+        "deliveryTrackingNumberLabel": "Delivery Tracking Number",
+        "deliveryMemoLabel": "Delivery Memo",
+        "deliveryInfoLabel": "Delivery Info",
+        "orderInfoLabel": "Order Info",
+        "paymentInfoLabel": "Payment Info",
+        "paymentDateLabel": "Payment Date",
+        "orderTypeQuantityLabel": "Type/Quantity",
+        "quantityUnit": "Quantity",
+        "typeUnit": "Type",
+        "orderDateLabel": "Order Date",
+        "orderNumberLabel": "Order Number",
+        "printOnlyOrderProducts": "Print Only Order Products",
+        "print": "Print",
+        "unpaid": "Unpaid",
+        "guestOrderDetailTitle": "Guest Order Detail",
+        "guestMissingParams": "Order number or verification code is missing.",
+        "guestLookupMismatch": "Order number or verification code does not match.",
+        "guestOrderCheckLink": "Guest order lookup",
+        "backToGuestOrderCheck": "Back to guest order lookup"
+    },
+    "footer": {
+        "copyright": "© Demo TCG Shop. All rights reserved.",
+        "companyName": "Company Name",
+        "companyNameValue": "Demo TCG Shop",
+        "representativeName": "Representative Name",
+        "representativeNameValue": "Demo Owner",
+        "businessRegistrationNumber": "Business Registration Number",
+        "businessRegistrationNumberValue": "000-00-00000",
+        "address": "Address",
+        "addressValue": "(Demo address)",
+        "privacyPolicy": "Privacy Policy",
+        "termsOfService": "Terms of Service",
+        "cardConditionGuide": "Card Condition Guide",
+        "businessRegistrationNumberfortelecom": "Business Registration Number for Telecom",
+        "businessRegistrationfortelecomNumberValue": "000-00-0000",
+        "phone": "Phone",
+        "email": "Email",
+        "wireTransferAccount": "Wire Transfer Account",
+        "howToVisit": "How to Visit",
+        "transferBankName": "Demo Bank"
+    },
+    "howToVisit": {
+        "parkingSpace": "※ There is not enough parking space in the building."
+    },
+    "products": {
+        "title": "Products",
+        "searchPlaceholder": "Search products",
+        "empty": "No products available.",
+        "addToCart": "Add to cart",
+        "loading": "Loading...",
+        "won": " KRW"
+    },
+    "productDetail": {
+        "backToList": "← Back to products",
+        "notFoundTitle": "Product not found",
+        "stock": "Stock",
+        "outOfStock": "Out of Stock"
+    },
+    "search": {
+        "placeholder": "Search",
+        "queryAriaLabel": "Search query",
+        "submitAriaLabel": "Search",
+        "suggestLoading": "Searching...",
+        "suggestEmpty": "No matching products",
+        "suggestListAriaLabel": "Search suggestions"
+    },
+    "game": {
+        "setList": {
+            "sets": "Sets",
+            "productsList": "Products List",
+            "noProductsFound": "No products found",
+            "code": "Code",
+            "releaseDate": "Release Date",
+            "sort": {
+                "latest": "Latest",
+                "alpha": "Alphabetical"
+            }
+        },
+        "noKoreanInfo": "-",
+        "searchFilterSidebar": {
+            "filter": "Filter",
+            "reset": "Reset",
+            "foilOnly": "Foil Only",
+            "foilFilter": "Foil Filter",
+            "foilFilterAll": "All",
+            "normalOnly": "Normal Only",
+            "inStockOnly": "In Stock Only",
+            "collapse": "Collapse",
+            "expand": "Expand",
+            "setName": "Set Name",
+            "rarity": "Rarity",
+            "productType": "Product Type",
+            "suppliesType": "Supplies Type",
+            "manualCategory": "Category"
+        },
+        "sealed": {
+            "mtg": {
+                "title": "MTG Sealed Products",
+                "listTitle": "MTG Sealed Products List"
+            },
+            "fab": {
+                "title": "FAB Sealed Products",
+                "listTitle": "FAB Sealed Products List"
+            },
+            "swu": {
+                "title": "SWU Sealed Products",
+                "listTitle": "SWU Sealed Products List"
+            },
+            "rift": {
+                "title": "Riftbound Sealed Products",
+                "listTitle": "Riftbound Sealed Products List"
+            }
+        },
+        "productLineName": {
+            "swu": "Star Wars: Unlimited"
+        }
+    },
+    "productBrowse": {
+        "loading": "Loading products…",
+        "noResults": "No search results found.",
+        "sort": {
+            "alpha": "Name A-Z",
+            "alphaReverse": "Name Z-A",
+            "highToLow": "High To Low",
+            "lowToHigh": "Low To High",
+            "pageSize": "Page Size",
+            "gridLayout": "Grid Layout",
+            "listLayout": "List Layout",
+            "setnumber": "Set Number Asc"
+        }
+    },
+    "headerNav": {
+        "allSets": "All Sets",
+        "sealedProducts": "Sealed Products",
+        "allProducts": "All Products",
+        "games": {
+            "mtg": "Magic: The Gathering",
+            "fab": "Flesh & Blood TCG",
+            "swu": "Star Wars Unlimited",
+            "rift": "Riftbound",
+            "special": "Special",
+            "preorder": "Pre-order",
+            "eventticket": "Event Ticket"
+        },
+        "supplies": {
+            "title": "Supplies",
+            "listTitle": "Supplies List"
+        },
+        "playmat": "Playmat",
+        "deckbox": "Deckbox",
+        "protecter": "Protecter",
+        "binder": "Binder",
+        "preorder": "Pre-order",
+        "eventticket": "Event Ticket"
+    },
+    "productSalesInfo": {
+        "cardInfo": "Card Info",
+        "productInfo": "Product Info",
+        "failedToLoadProductData": "Failed to load product data.",
+        "loading": "Loading...",
+        "productNotFound": "Product not found.",
+        "flipCardImage": "Flip Card Image",
+        "productStatus": "Product Status",
+        "newProduct": "New Product",
+        "company": "Company",
+        "game": "Game",
+        "origin": "Origin",
+        "recommendedAge": "Recommended Age",
+        "receiptIssuance": "Receipt Issuance",
+        "creditCardReceipt/CashReceipt": "Credit Card Receipt/Cash Receipt"
+    },
+    "checkoutPage": {
+        "international_payment_notice": "If your card is issued from outside of South Korea, Please press the button below.",
+        "international_payment_notice_2": "Payment is not yet supported. Please use the Pay in store button.",
+        "invalid_checkout_entry": "Invalid checkout entry.",
+        "new_order_page_opened": "A new order page has been opened.",
+        "access_denied": "Access denied.",
+        "checkout_expired": "Checkout information has expired.",
+        "checkout_timeout": "Checkout timed out. Please try again from your cart.",
+        "price_changed": "Product prices have changed. Please review your order.",
+        "point_amount_changed": "Reward points have changed. Please review your order.",
+        "out_of_stock": "Some products are out of stock.",
+        "product_unavailable": "Some products are no longer available.",
+        "draft_replaced": "Checkout information has changed. Please review it again.",
+        "draft_expired": "Checkout information has expired. Please try again from your cart.",
+        "insufficient_points": "You do not have enough points.",
+        "order_processing_failed": "Failed to process the order. Please try again.",
+        "loading_order_info": "Loading order information...",
+        "order_info_not_found": "Order information could not be found.",
+        "order_confirmed": "This order has already been confirmed.",
+        "view_order_history": "View order history",
+        "to_move": "to move.",
+        "checkout": "Checkout",
+        "checkout_description": "Review your delivery information and payment amount.",
+        "delivery_method": "Delivery Method",
+        "delivery": "Delivery",
+        "store_pickup": "Store pickup",
+        "store_pickup_address": "Store pickup",
+        "recipient_info": "Recipient Information",
+        "name": "Name",
+        "required_field": "Required",
+        "fill_required_fields": "Please fill in all required fields.",
+        "fill_with_buyer_info_name": "Fill the User Name",
+        "fill_with_buyer_info_email": "Fill the User Email",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address",
+        "postal_code": "Postal code",
+        "search_postal_code": "Search postal code",
+        "search_postal_code_placeholder": "Search by road name, building, or lot number",
+        "search_postal_code_no_results": "No results found.",
+        "search": "Search",
+        "order_request": "Order request. If you need any request for delivery, please enter here.",
+        "event_ticket_required": "Please enter the event ticket information.",
+        "validation": {
+            "nameRequired": "Please enter your name.",
+            "emailRequired": "Please enter your email.",
+            "emailInvalid": "Please enter a valid email address.",
+            "phoneRequired": "Please enter your phone number.",
+            "phoneInvalid": "Please enter a valid phone number.",
+            "addressRequired": "Please enter your address.",
+            "addressDetailRequired": "Please enter your address detail.",
+            "postalCodeRequired": "Please enter your postal code.",
+            "postalCodeInvalid": "Please enter a valid 5-digit postal code."
+        },
+        "points": "Points",
+        "points_balance": "Available points",
+        "order_summary": "Order Summary",
+        "stock_hint": "{types} types / {quantity} items",
+        "product_types_quantity": "Types / Quantity",
+        "product_total": "Product total",
+        "shipping_fee": "Shipping fee",
+        "points_used": "Points used",
+        "pending_payment_amount": "Payment amount",
+        "payment_notice": "Payments are not yet connected. Confirmed orders will be processed as paid.",
+        "processing": "Processing...",
+        "pay_in_store": "Pay in store",
+        "pay_with_toss_payments": "Pay with Toss Payments",
+        "pay": "Pay",
+        "opening_payment_window": "Opening payment…",
+        "willearnpoints": "Will earn points",
+        "address_detail": "Address detail"
+    },
+    "checkoutComplete": {
+        "title": "Your order has been placed",
+        "orderInfo": "Order information",
+        "orderNumber": "Order number",
+        "guestConfirmCode": "Guest verification code",
+        "goHome": "Go to home",
+        "cart": "Cart"
+    },
+    "guestOrderCheck": {
+        "title": "Guest order check",
+        "description": "Enter the order number and verification code issued for guest orders.",
+        "placeholder": {
+            "orderId": "Order number",
+            "guestCode": "Guest order verification code"
+        },
+        "button": {
+            "submitting": "Checking...",
+            "submit": "Check order"
+        },
+        "error": {
+            "orderId": "Please enter the order number correctly.",
+            "guestCode": "Please enter the guest order verification code.",
+            "notFound": "The order number or verification code does not match.",
+            "failed": "Failed to check the order. Please try again later."
+        }
+    }
+}

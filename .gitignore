@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Build
+frontend/dist/
+backend/target/
+backend/build/
+backend/bin/
+backend/.gradle/
+.next/
+out/
+
+# Env (실제 설정·secrets — *.example 템플릿은 커밋 유지)
+**/.env
+**/.env.local
+**/.env.*.local
+**/.env.development
+**/.env.production
+**/.env.test
+**/.env.staging
+
+# 시연 서버 영속 데이터 (/var/www/html/tcgshop/data)
+/data/mysql/
+/data/uploads/
+/data/card-images/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor / tool lock files (path pointer, not source)
+**/.LCK*~
+
+# Misc
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+*.tar
+*.tar.gz

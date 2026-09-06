@@ -1,0 +1,55 @@
+# Live server (prod): external DB + mounted file paths + file logging for Docker deploys.
+
+app:
+  scheduler:
+    zone: Asia/Seoul
+    card-data-update: "0 0 2 * * *"
+    tcg-p-image-download: "0 30 3 * * *"
+    openbinder-image-download: "0 30 3 * * *"
+  cors:
+    origins: ${CORS_ORIGINS:https://tcgshop.example}
+  security:
+    permit-metadata-without-auth: ${PERMIT_METADATA_WITHOUT_AUTH:false}
+    strict-origin-check: ${STRICT_ORIGIN_CHECK:true}
+  jwt:
+    secret: ${JWT_SECRET}
+  personal-data-encryption-key: ${PERSONAL_DATA_ENCRYPTION_KEY}
+  toss-place:
+    access-key: ${TOSS_PLACE_ACCESS_KEY}
+    secret-key: ${TOSS_PLACE_SECRET_KEY}
+    merchant-id: ${TOSS_PLACE_MERCHANT_ID}
+
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 15
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    open-in-view: false
+  web:
+    resources:
+      static-locations: classpath:/static/,file:${FILE_CARD_IMAGES:/app/data/card-images/}
+  mvc:
+    static-path-pattern: /card-images/**
+
+file:
+  path:
+    upload: ${FILE_UPLOAD_PATH:/app/data/uploads/}
+    card-images: ${FILE_CARD_IMAGES:/app/data/card-images/}
+
+server:
+  tomcat:
+    max-part-count: 100
+
+logging:
+  file:
+    path: ${LOG_PATH:/app/logs}
+    name: ${LOG_PATH:/app/logs}/application.log
+  level:
+    root: INFO
+    org.hibernate.SQL: warn

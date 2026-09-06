@@ -1,0 +1,528 @@
+{
+    "siteTitle": "Rolling Dice TCG & Hobby",
+    "siteDescription": "Great Hobby Shop in Korea!",
+    "nav": {
+        "home": "쇼핑몰",
+        "products": "상품",
+        "cart": "장바구니",
+        "admin": "관리자",
+        "login": "로그인",
+        "logout": "로그아웃",
+        "mypage": "마이페이지",
+        "guestordercheck": "비회원 주문 확인"
+    },
+    "home": {
+        "heroTitle": "쇼핑몰에 오신 것을 환영합니다",
+        "heroSubtitle": "다양한 상품을 만나보세요.",
+        "cta": "상품 보기",
+        "sectionProductsTitle": "상품",
+        "sectionProductsDesc": "다양한 카테고리의 상품을 둘러보세요.",
+        "sectionCartTitle": "장바구니",
+        "sectionCartDesc": "담은 상품을 확인하고 결제하세요.",
+        "view": "보기"
+    },
+    "cart": {
+        "title": "장바구니",
+        "empty": "장바구니가 비어 있습니다.",
+        "totalLabel": "총",
+        "remove": "삭제",
+        "checkout": "결제하기",
+        "continueShopping": "계속 쇼핑하기",
+        "decreaseQuantity": "수량 줄이기",
+        "increaseQuantity": "수량 늘리기",
+        "cartList": "장바구니 목록",
+        "cartEmpty": "장바구니가 비어 있습니다.",
+        "removeCartItemConfirm": "장바구니에서 이 아이템을 삭제하시겠습니까?",
+        "image": "이미지",
+        "productInfo": "상품정보",
+        "price": "가격",
+        "quantity": "수량",
+        "total": "합계",
+        "buy": "구매",
+        "clear": "비우기",
+        "clearCartConfirm": "장바구니를 비우시겠습니까?",
+        "clearCartSuccess": "장바구니가 비워졌습니다.",
+        "clearCartError": "장바구니 비우기에 실패했습니다.",
+        "removeCartItemSuccess": "장바구니 아이템이 삭제되었습니다.",
+        "removeCartItemError": "장바구니 아이템 삭제에 실패했습니다.",
+        "updateCartSuccess": "장바구니 아이템 수량이 변경되었습니다.",
+        "updateCartError": "장바구니 아이템 수량 변경에 실패했습니다.",
+        "addCartSuccess": "장바구니에 아이템이 추가되었습니다.",
+        "addCartError": "장바구니에 아이템 추가에 실패했습니다.",
+        "stockOverflowError": "재고 이상으로 장바구니에 담을 수 없습니다.",
+        "productUnavailableError": "판매가 종료된 상품이라 장바구니에서 제거했습니다.",
+        "stock": "재고",
+        "priceTotal": "가격 합계",
+        "productsCount": "종",
+        "products": "상품",
+        "quantityCount": "개"
+    },
+    "login": {
+        "title": "로그인",
+        "email": "이메일",
+        "password": "비밀번호",
+        "button": "로그인",
+        "registerButton": "회원가입",
+        "error": "로그인에 실패했습니다. 이메일과 비밀번호를 확인해 주세요.",
+        "submitting": "로그인 중...",
+        "validation": {
+            "emailRequired": "이메일을 입력해 주세요.",
+            "emailInvalid": "올바른 이메일 주소를 입력해 주세요.",
+            "passwordRequired": "비밀번호를 입력해 주세요."
+        },
+        "showPassword": "비밀번호 보기",
+        "hidePassword": "비밀번호 숨기기",
+        "forgotPassword": "혹시 비밀번호를 잊으셨나요?"
+    },
+    "terms": {
+        "title": "서비스 이용약관",
+        "content": "<b>서비스 이용약관 내용</b><br><br><a href='https://www.google.com'>Google</a>"
+    },
+    "privacy": {
+        "title": "개인정보 처리방침",
+        "content": "<b>개인정보 처리방침 내용</b><br><br><a href='https://www.google.com'>Google</a>"
+    },
+    "auth": {
+        "error": {
+            "emailAndPasswordRequired": "이메일과 비밀번호를 입력해 주세요.",
+            "invalidEmailOrPassword": "이메일 또는 비밀번호가 올바르지 않습니다.",
+            "invalidRefreshToken": "세션이 만료되었습니다. 다시 로그인해 주세요.",
+            "invalidAccessToken": "인증이 유효하지 않습니다.",
+            "userNotFound": "사용자를 찾을 수 없습니다.",
+            "duplicateEmail": "이미 존재하는 이메일입니다.",
+            "passwordPolicyViolation": "비밀번호 정책에 맞지 않습니다.",
+            "internalServerError": "서버 오류가 발생했습니다."
+        }
+    },
+    "user": {
+        "error": {
+            "duplicateEmail": "이미 존재하는 이메일입니다.",
+            "invalidPassword": "비밀번호는 8자 이상 20자 이하이며, 특수문자를 포함해야 합니다. 허용된 특수문자: !@#$%^&*()\\-_=+\\[\\]{}?,.",
+            "passwordNotMatch": "비밀번호가 일치하지 않습니다."
+        }
+    },
+    "register": {
+        "title": "회원가입",
+        "name": "이름",
+        "email": "이메일",
+        "password": "비밀번호",
+        "passwordConfirm": "비밀번호 확인",
+        "address": "주소",
+        "phone": "연락처",
+        "button": "가입하기",
+        "submitting": "가입 중...",
+        "success": "가입이 완료되었습니다. 로그인해 주세요.",
+        "error": "가입에 실패했습니다. 다시 시도해 주세요.",
+        "haveAccount": "이미 계정이 있으신가요?",
+        "mustType": "* 필수 입력 항목입니다.",
+        "termsOfService": "서비스 이용약관",
+        "privacyPolicy": "개인정보 처리방침",
+        "termsAgreed": "서비스 이용약관 동의",
+        "privacyAgreed": "개인정보 처리방침 동의",
+        "validation": {
+            "nameRequired": "이름을 입력해 주세요.",
+            "emailRequired": "이메일을 입력해 주세요.",
+            "emailInvalid": "올바른 이메일 주소를 입력해 주세요.",
+            "passwordRequired": "비밀번호를 입력해 주세요.",
+            "passwordConfirmRequired": "비밀번호 확인을 입력해 주세요.",
+            "passwordMatch": "비밀번호가 일치합니다.",
+            "passwordNotMatch": "비밀번호가 일치하지 않습니다.",
+            "agreementRequired": "동의를 진행해주세요.",
+            "termsAgreedRequired": "서비스 이용약관 동의를 해주세요.",
+            "privacyAgreedRequired": "개인정보 처리방침 동의를 해주세요."
+        }
+    },
+    "mypage": {
+        "main": {
+            "tab": {
+                "main": "메인",
+                "order": "주문",
+                "point": "포인트"
+            },
+            "personalInfo": {
+                "title": "개인 정보 관리",
+                "name": "이름",
+                "edit": "수정",
+                "editName": "이름 수정",
+                "registeredEmail": "등록된 이메일 주소",
+                "rewardPoint": "적립 포인트액",
+                "editPassword": "비밀번호 수정",
+                "currentPassword": "기존 비밀번호",
+                "newPassword": "새 비밀번호",
+                "newPasswordConfirm": "새 비밀번호 확인",
+                "passwordMatch": "새 비밀번호가 일치합니다.",
+                "passwordMismatch": "새 비밀번호가 일치하지 않습니다.",
+                "nameChangeSuccess": "이름이 변경되었습니다.",
+                "passwordConfirmMismatch": "새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.",
+                "passwordChangeSuccess": "비밀번호가 변경되었습니다."
+            },
+            "orderOverview": {
+                "title": "주문 현황",
+                "description": "최근 5건의 주문 현황을 확인합니다."
+            },
+            "orderHistory": {
+                "title": "주문 내역"
+            },
+            "pointLog": {
+                "title": "포인트 내역",
+                "currentPoint": "현재 포인트: {point}",
+                "empty": "포인트 내역이 없습니다.",
+                "columns": {
+                    "date": "일시",
+                    "changedPoint": "변경 포인트",
+                    "beforeAfter": "변경 전/후",
+                    "executor": "처리"
+                }
+            },
+            "button": {
+                "withdraw": "회원탈퇴",
+                "save": "저장"
+            },
+            "error": {
+                "pointNotEnough": "포인트가 부족하여 탈퇴할 수 없습니다."
+            },
+            "withdraw": {
+                "title": "회원 탈퇴",
+                "lossPointConfirm": "탈퇴 시 포인트가 손실됩니다. 정말 탈퇴하시겠습니까?"
+            }
+        }
+    },
+    "common": {
+        "confirm": "확인",
+        "error": "오류가 발생했습니다. 다시 시도해 주세요.",
+        "next": "다음",
+        "previous": "이전",
+        "page": "페이지",
+        "of": "중",
+        "results": "개",
+        "game": "게임",
+        "detail": "상세",
+        "cancel": "취소",
+        "logoAlt": "Rolling Dice TCG & Hobby",
+        "productImageAlt": "상품 이미지"
+    },
+    "order": {
+        "orderDetail": "주문 상세",
+        "title": "주문",
+        "empty": "주문이 비어 있습니다.",
+        "total": "총",
+        "checkout": "결제하기",
+        "continueShopping": "계속 쇼핑하기",
+        "listColumns": {
+            "orderId": "번호",
+            "orderDate": "일시",
+            "orderTotal": "합계",
+            "orderStatus": "상태",
+            "orderAmount": "총액"
+        },
+        "cancelSuccess": "주문이 취소되었습니다.",
+        "cancelFailed": "주문 취소에 실패했습니다.",
+        "cancelOrder": "취소",
+        "cancelNotAllowed": "취소할 수 없는 주문입니다.",
+        "detailForbidden": "이 주문을 조회할 권한이 없습니다.",
+        "detailNotFound": "주문을 찾을 수 없습니다.",
+        "status": {
+            "ORDER_COMPLETED": "주문 완료",
+            "ORDER_RECEIPT_COMPLETED": "접수 완료",
+            "ORDER_PENDING": "결제 확인중",
+            "ORDER_DELIVERY_COMPLETED": "발송 완료",
+            "ORDER_CANCELLED": "취소"
+        },
+        "paymentMethod": {
+            "카드": "CREDIT CARD",
+            "CARD": "CREDIT CARD",
+            "DIRECT": "매장결제",
+            "TRANSFER": "무통장"
+        },
+        "paymentMethodLabel": "결제 방식",
+        "productSubtotalLabel": "상품 총 금액",
+        "deliveryFeeLabel": "배송료",
+        "paymentCurrencyLabel": "결제 통화",
+        "totalPaymentAmountLabel": "총 결제 금액",
+        "totalPaymentAmountDescription": "송료 포함, 포인트 차감 전",
+        "usedPointAmountLabel": "포인트 사용 금액",
+        "actualPaymentAmountLabel": "실질 결제 금액",
+        "earnedPointLabel": "적립 포인트",
+        "orderCustomerLabel": "주문자",
+        "recipientNameLabel": "수령인",
+        "recipientPhoneLabel": "연락처",
+        "recipientEmailLabel": "이메일",
+        "deliveryCompanyLabel": "배송 회사",
+        "deliveryCompany": {
+            "STORE_PICKUP": "매장 수령",
+            "CJ_LOGISTICS": "CJ 대한통운"
+        },
+        "recipientAddressLabel": "배송지",
+        "storePickup": "매장 수령",
+        "orderStatusLabel": "주문 상태",
+        "orderRequestLabel": "요청 사항",
+        "deliveryTrackingNumberLabel": "송장번호",
+        "deliveryMemoLabel": "안내 메시지",
+        "deliveryInfoLabel": "배송 정보",
+        "orderInfoLabel": "주문 정보",
+        "paymentInfoLabel": "결제 정보",
+        "paymentDateLabel": "결제 일시",
+        "orderTypeQuantityLabel": "종류/개수",
+        "quantityUnit": "개",
+        "typeUnit": "종",
+        "orderDateLabel": "주문 일시",
+        "orderNumberLabel": "주문 번호",
+        "printOnlyOrderProducts": "주문 제품만 프린트",
+        "print": "프린트",
+        "unpaid": "미결제",
+        "guestOrderDetailTitle": "비회원 주문 상세",
+        "guestMissingParams": "주문 번호 또는 확인 코드가 없습니다.",
+        "guestLookupMismatch": "주문 번호 또는 확인 코드가 일치하지 않습니다.",
+        "guestOrderCheckLink": "비회원 주문 확인",
+        "backToGuestOrderCheck": "주문 확인으로 돌아가기"
+    },
+    "footer": {
+        "copyright": "© Demo TCG Shop. All rights reserved.",
+        "companyName": "상호명",
+        "companyNameValue": "Demo TCG Shop",
+        "representativeName": "대표자명",
+        "representativeNameValue": "Demo Owner",
+        "businessRegistrationNumber": "사업자등록번호",
+        "businessRegistrationNumberValue": "000-00-00000",
+        "address": "주소",
+        "addressValue": "(Demo address)",
+        "privacyPolicy": "개인정보처리방침",
+        "termsOfService": "이용약관",
+        "cardConditionGuide": "카드 컨디션 가이드",
+        "businessRegistrationNumberfortelecom": "통신판매업신고번호",
+        "businessRegistrationfortelecomNumberValue": "000-00-0000",
+        "phone": "전화번호",
+        "email": "이메일",
+        "wireTransferAccount": "계좌번호",
+        "howToVisit": "오시는 길",
+        "transferBankName": "Demo Bank"
+    },
+    "howToVisit": {
+        "parkingSpace": "※건물 내 충분한 주차 공간이 없습니다."
+    },
+    "products": {
+        "title": "상품 목록",
+        "searchPlaceholder": "상품 검색",
+        "empty": "등록된 상품이 없습니다.",
+        "addToCart": "담기",
+        "loading": "로딩 중...",
+        "won": "원"
+    },
+    "productDetail": {
+        "backToList": "← 상품 목록",
+        "notFoundTitle": "상품을 찾을 수 없습니다",
+        "stock": "재고",
+        "outOfStock": "재고 없음"
+    },
+    "search": {
+        "placeholder": "검색",
+        "queryAriaLabel": "검색어",
+        "submitAriaLabel": "검색",
+        "suggestLoading": "검색 중...",
+        "suggestEmpty": "일치하는 상품이 없습니다",
+        "suggestListAriaLabel": "검색 자동완성"
+    },
+    "game": {
+        "setList": {
+            "sets": "세트",
+            "productsList": "제품 목록",
+            "noProductsFound": "해당 세트의 제품이 없습니다.",
+            "code": "세트 코드",
+            "releaseDate": "발매일",
+            "sort": {
+                "latest": "최신순",
+                "alpha": "알파벳순"
+            }
+        },
+        "noKoreanInfo": "-",
+        "searchFilterSidebar": {
+            "filter": "필터",
+            "reset": "초기화",
+            "foilFilter": "포일 필터",
+            "foilOnly": "포일만 보기",
+            "foilFilterAll": "전체(조건 없음)",
+            "normalOnly": "일반만 보기",
+            "inStockOnly": "재고 있는 상품만 보기",
+            "collapse": "접기",
+            "expand": "더 보기",
+            "setName": "세트 이름",
+            "rarity": "희귀도",
+            "productType": "제품 타입",
+            "suppliesType": "서플라이 타입",
+            "manualCategory": "카테고리"
+        },
+        "sealed": {
+            "mtg": {
+                "title": "MTG 밀봉 제품",
+                "listTitle": "MTG 밀봉 제품 목록"
+            },
+            "fab": {
+                "title": "FAB 밀봉 제품",
+                "listTitle": "FAB 밀봉 제품 목록"
+            },
+            "swu": {
+                "title": "SWU 밀봉 제품",
+                "listTitle": "SWU 밀봉 제품 목록"
+            },
+            "rift": {
+                "title": "Riftbound 밀봉 제품",
+                "listTitle": "Riftbound 밀봉 제품 목록"
+            }
+        },
+        "productLineName": {
+            "swu": "Star Wars: Unlimited"
+        }
+    },
+    "productBrowse": {
+        "loading": "상품을 불러오는 중…",
+        "noResults": "검색 결과가 없습니다.",
+        "sort": {
+            "alpha": "이름 A-Z",
+            "alphaReverse": "이름 Z-A",
+            "highToLow": "높은 가격순",
+            "lowToHigh": "낮은 가격순",
+            "pageSize": "페이지 크기",
+            "gridLayout": "그리드 레이아웃",
+            "listLayout": "리스트 레이아웃",
+            "setnumber": "세트 번호순"
+        }
+    },
+    "headerNav": {
+        "allSets": "모든 세트",
+        "sealedProducts": "밀봉 제품",
+        "allProducts": "전체 상품",
+        "games": {
+            "mtg": "Magic: The Gathering",
+            "fab": "Flesh & Blood TCG",
+            "swu": "Star Wars Unlimited",
+            "rift": "Riftbound",
+            "special": "Special",
+            "preorder": "Pre-order",
+            "eventticket": "이벤트 티켓"
+        },
+        "supplies": {
+            "title": "서플라이",
+            "listTitle": "서플라이 목록"
+        },
+        "playmat": "플레이매트",
+        "deckbox": "덱박스",
+        "protecter": "프로텍터",
+        "binder": "바인더",
+        "preorder": "Pre-order",
+        "eventticket": "이벤트 티켓"
+    },
+    "productSalesInfo": {
+        "cardInfo": "카드 정보",
+        "failedToLoadProductData": "상품 데이터를 불러오는데 실패했습니다.",
+        "loading": "로딩 중...",
+        "productNotFound": "상품을 찾을 수 없습니다.",
+        "flipCardImage": "카드 이미지 뒤집기",
+        "productInfo": "상품 정보",
+        "productStatus": "상품 상태",
+        "newProduct": "신상품",
+        "company": "회사",
+        "game": "게임",
+        "origin": "원산지",
+        "recommendedAge": "권장 연령",
+        "receiptIssuance": "영수증 발급",
+        "creditCardReceipt/CashReceipt": "신용카드전표/현금 영수증"
+    },
+    "checkoutPage": {
+        "international_payment_notice": "한국 외 발행 카드로 결제하시려면 아래 버튼을 눌러주세요.",
+        "international_payment_notice_2": "사이트 내 결제는 아직 지원되지 않습니다. 매장 결제 버튼을 이용해 주세요.",
+        "invalid_checkout_entry": "잘못된 결제 진입입니다.",
+        "new_order_page_opened": "새 주문 페이지가 열렸습니다.",
+        "access_denied": "접근 권한이 없습니다.",
+        "checkout_expired": "결제 정보가 만료되었습니다.",
+        "checkout_timeout": "결제 시간이 초과되었습니다. 장바구니에서 다시 시도해 주세요.",
+        "price_changed": "상품 가격이 변경되었습니다. 주문 내용을 다시 확인해 주세요.",
+        "point_amount_changed": "적립 포인트가 변경되었습니다. 주문 내용을 다시 확인해 주세요.",
+        "out_of_stock": "일부 상품의 재고가 부족합니다.",
+        "product_unavailable": "일부 상품을 더 이상 구매할 수 없습니다.",
+        "draft_replaced": "결제 정보가 변경되었습니다. 다시 확인해 주세요.",
+        "draft_expired": "결제 정보가 만료되었습니다. 장바구니에서 다시 시도해 주세요.",
+        "insufficient_points": "보유 포인트가 부족합니다.",
+        "order_processing_failed": "주문 처리에 실패했습니다. 다시 시도해 주세요.",
+        "loading_order_info": "주문 정보를 불러오는 중입니다...",
+        "order_info_not_found": "주문 정보를 찾을 수 없습니다.",
+        "order_confirmed": "이미 확정된 주문입니다.",
+        "view_order_history": "주문 내역 보기",
+        "to_move": "로 이동합니다.",
+        "checkout": "결제",
+        "checkout_description": "배송 정보와 결제 예정 금액을 확인해 주세요.",
+        "delivery_method": "수령 방법",
+        "delivery": "배송",
+        "store_pickup": "매장 수령",
+        "store_pickup_address": "매장 수령",
+        "recipient_info": "수령인 정보",
+        "name": "이름",
+        "required_field": "필수 입력 항목입니다.",
+        "fill_required_fields": "필수 입력 항목을 모두 입력해 주세요.",
+        "fill_with_buyer_info_name": "구매자 이름 입력",
+        "fill_with_buyer_info_email": "구매자 이메일 입력",
+        "email": "이메일",
+        "phone": "연락처",
+        "address": "주소",
+        "postal_code": "우편번호",
+        "search_postal_code": "우편번호 검색",
+        "search_postal_code_placeholder": "도로명, 건물명, 지번으로 검색",
+        "search_postal_code_no_results": "검색 결과가 없습니다.",
+        "search": "검색",
+        "order_request": "배송 요청 사항. 배송 시 특별한 요청이 있으면 여기에 입력해 주세요.",
+        "event_ticket_required": "이벤트 티켓 정보를 입력해 주세요.",
+        "validation": {
+            "nameRequired": "이름을 입력해 주세요.",
+            "emailRequired": "이메일을 입력해 주세요.",
+            "emailInvalid": "올바른 이메일 형식을 입력해 주세요.",
+            "phoneRequired": "연락처를 입력해 주세요.",
+            "phoneInvalid": "올바른 전화번호 형식을 입력해 주세요.",
+            "addressRequired": "주소를 입력해 주세요.",
+            "addressDetailRequired": "상세 주소를 입력해 주세요.",
+            "postalCodeRequired": "우편번호를 입력해 주세요.",
+            "postalCodeInvalid": "우편번호 5자리를 입력해 주세요."
+        },
+        "points": "포인트",
+        "points_balance": "보유 포인트",
+        "order_summary": "주문 요약",
+        "stock_hint": "{types}종 / {quantity}개",
+        "product_types_quantity": "종류 / 수량",
+        "product_total": "상품 금액",
+        "shipping_fee": "배송비",
+        "points_used": "사용 포인트",
+        "pending_payment_amount": "결제 예정 금액",
+        "payment_notice": "PG 미연동 단계입니다. 주문 확정 시 결제 완료로 처리됩니다.",
+        "processing": "처리 중...",
+        "pay_in_store": "매장 결제",
+        "pay_with_toss_payments": "토스페이먼츠로 결제",
+        "pay": "결제하기",
+        "opening_payment_window": "결제창 여는 중…",
+        "willearnpoints": "적립 포인트",
+        "address_detail": "상세 주소"
+    },
+    "checkoutComplete": {
+        "title": "주문이 완료되었습니다",
+        "orderInfo": "주문 정보",
+        "orderNumber": "주문번호",
+        "guestConfirmCode": "비회원 확인 코드",
+        "goHome": "홈으로",
+        "cart": "장바구니"
+    },
+    "guestOrderCheck": {
+        "title": "비회원 주문 확인",
+        "description": "비회원 주문 시 발급된 주문 번호와 확인 코드를 입력해 주세요.",
+        "placeholder": {
+            "orderId": "주문 번호",
+            "guestCode": "비회원 주문 확인 코드"
+        },
+        "button": {
+            "submitting": "확인 중…",
+            "submit": "주문 확인"
+        },
+        "error": {
+            "orderId": "주문 번호를 올바르게 입력해 주세요.",
+            "guestCode": "비회원 주문 확인 코드를 입력해 주세요.",
+            "notFound": "주문 번호 또는 확인 코드가 일치하지 않습니다.",
+            "failed": "주문 확인에 실패했습니다. 잠시 후 다시 시도해 주세요."
+        }
+    }
+}

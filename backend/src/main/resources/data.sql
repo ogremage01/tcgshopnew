@@ -1,0 +1,3 @@
+-- Optional: sample products (run after schema is created; or use data.sql with spring.sql.init.mode=always and ddl-auto=create)
+-- INSERT INTO products (name, description, price) VALUES ('샘플 상품 1', '설명 1', 10000);
+-- INSERT INTO products (name, description, price) VALUES ('샘플 상품 2', '설명 2', 20000);

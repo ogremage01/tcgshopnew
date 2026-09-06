@@ -1,0 +1,12 @@
+services:
+  phpmyadmin:
+    image: phpmyadmin:5-apache
+    container_name: tcgshop-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "${PHPMYADMIN_PORT:-8080}:80"
+    environment:
+      PMA_HOST: ${PMA_HOST}
+      PMA_PORT: ${PMA_PORT:-3306}
+      PMA_ARBITRARY: ${PMA_ARBITRARY:-0}
+      UPLOAD_LIMIT: ${PMA_UPLOAD_LIMIT:-64M}

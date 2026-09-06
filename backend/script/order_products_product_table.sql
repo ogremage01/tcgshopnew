@@ -1,0 +1,2 @@
+-- Optional: 기존 DB에 order_products가 이미 있고 ddl-auto로 컬럼만 추가된 경우 백필용 (MariaDB/MySQL 예시)
+-- UPDATE order_products SET product_table = 'UNION_PRICE' WHERE product_table IS NULL;

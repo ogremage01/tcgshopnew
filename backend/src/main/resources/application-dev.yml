@@ -1,0 +1,65 @@
+# Local development. Secrets come from environment variables, never from this file.
+app:
+  personal-data-encryption-key: ${PERSONAL_DATA_ENCRYPTION_KEY:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=}
+  jwt:
+    secret: ${JWT_SECRET:dev-jwt-secret-key-must-be-at-least-32-bytes!}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  auth:
+    refresh-expiration-ms: ${REFRESH_EXPIRATION_MS:1209600000}
+  security:
+    permit-metadata-without-auth: true
+    strict-origin-check: false
+  toss-place:
+    access-key: ${TOSS_PLACE_ACCESS_KEY:}
+    secret-key: ${TOSS_PLACE_SECRET_KEY:}
+    merchant-id: ${TOSS_PLACE_MERCHANT_ID:}
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    url: ${DB_URL:jdbc:mariadb://localhost:3306/shop?useUnicode=true&characterEncoding=utf8mb4&serverTimezone=Asia/Seoul}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+    driver-class-name: org.mariadb.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+  web:
+    resources:
+      static-locations: classpath:/static/,file:./data/card-images/
+  mvc:
+    static-path-pattern: /card-images/**
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          batch_size: 1000
+        session:
+          events:
+            log:
+              LOG_QUERIES_SLOWER_THAN_MS: 300
+logging:
+  level:
+    org.hibernate.SQL: off
+    org.hibernate.orm.jdbc.bind: off
+    org.hibernate.SQL_SLOW: info
+    com.shop.search: info
+
+file:
+  path:
+    upload: ${FILE_UPLOAD_PATH:./data/uploads/}
+    card-images: ${FILE_CARD_IMAGES:./data/card-images/}
+
+mail:
+  host: ${MAIL_HOST:smtp.gmail.com}
+  port: ${MAIL_PORT:587}
+  username: ${GOOGLE_MAIL_ADDRESS:}
+  password: ${GOOGLE_MAIL_PASSWORD:}

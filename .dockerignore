@@ -1,0 +1,26 @@
+# Git
+.git
+.gitignore
+
+# Backend
+backend/build
+backend/.gradle
+backend/bin
+
+# Frontend
+frontend/node_modules
+frontend/.next
+frontend/.vercel
+# 로컬 테스트용 env가 운영 번들에 섞이지 않도록 제외 (.env.production 은 빌드에 사용 가능)
+frontend/.env.local
+frontend/.env*.local
+frontend/.env.development
+
+# IDE / OS
+.idea
+*.iml
+.DS_Store
+*.log
+
+# Optional: 기존 개별 Docker 빌드 결과 제외
+# (통합 빌드에는 영향 없음)

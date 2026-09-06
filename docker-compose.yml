@@ -1,0 +1,51 @@
+services:
+  # 선택: facet Redis 캐시( SEARCH_FACETS_CACHE_ENABLED=true ) 시 backend가 사용
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  # 통합 앱: 한 컨테이너에서 백엔드 + 프론트엔드 (Nginx가 /api → 백엔드, / → 프론트)
+  # 기본은 MariaDB. DB_URL 등 환경 변수를 설정하세요.
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SERVER_PORT: 1567
+      CORS_ORIGINS: http://localhost,http://localhost:80
+      JWT_SECRET: ${JWT_SECRET:-change-this-to-a-secure-256-bit-secret-in-production}
+      API_SERVER_URL: http://127.0.0.1:1567
+      TOSS_WIDGET_SECRET_KEY: ${TOSS_WIDGET_SECRET_KEY:-}
+
+  backend:
+    depends_on:
+      - redis
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "1567:1567"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SERVER_PORT: 1567
+      CORS_ORIGINS: http://localhost:3000,http://localhost:3001,http://frontend:3000
+      JWT_SECRET: ${JWT_SECRET:-change-this-to-a-secure-256-bit-secret-in-production}
+      REDIS_HOST: ${REDIS_HOST:-redis}
+      SEARCH_FACETS_CACHE_ENABLED: ${SEARCH_FACETS_CACHE_ENABLED:-false}
+      TOSS_WIDGET_SECRET_KEY: ${TOSS_WIDGET_SECRET_KEY:-}
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"  # 호스트 3001 (로컬 next dev 3000과 충돌 방지)
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:1567
+      API_SERVER_URL: http://backend:1567
+    depends_on:
+      - backend
